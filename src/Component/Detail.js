@@ -4,9 +4,10 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import WorkIcon from '@mui/icons-material/Work';
+import WcIcon from '@mui/icons-material/Wc';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LanguageIcon from '@mui/icons-material/Language';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
 const Detail = () => {
@@ -75,13 +76,13 @@ const Detail = () => {
                             <h3 className="mt-3">Name: <span >{userdata.name}</span></h3>
                             <h3 className="mt-3">Age: <span >{userdata.age}</span></h3>
                             <p className="mt-3"><MailOutlineIcon />Email: <span>{userdata.email}</span></p>
-                            <p className="mt-3"><WorkIcon />Occuption: <span>{userdata.work}</span></p>
+                            <p className="mt-3"><WcIcon />Gender: <span>{userdata.gender}</span></p>
                         </div>
                         <div className="right_view  col-lg-6 col-md-6 col-12">
 
                             <p className="mt-5"><PhoneAndroidIcon />mobile: <span>+91 {userdata.mobile}</span></p>
-                            <p className="mt-3"><LocationOnIcon />location: <span>{userdata.add}</span></p>
-                            <p className="mt-3">Description: <span>{userdata.desc}</span></p>
+                            <p className="mt-3"><LocationOnIcon />location: <span>{userdata.state},{userdata.country}</span></p>
+                            <p className="mt-3"><LanguageIcon/>Language: <span>{userdata.lan}</span></p>
                         </div>
                     </div>
 

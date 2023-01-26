@@ -5,6 +5,7 @@ import {
 import App from "./App";
 import Detail from "./Component/Detail";
 import EditReg from "./Component/EditReg";
+import Img from "./Component/Img";
 import Register from "./Component/Register";
 
 export const router = createBrowserRouter([
@@ -17,8 +18,12 @@ export const router = createBrowserRouter([
       element: <EditReg/>,
     },
     {
-      path: "/view/:id",
+      path: "/detail/:id",
       element: <Detail/>,
+    },
+    {
+      path: "/img",
+      element: <Img/>,
     },
     {
         path: "/register",

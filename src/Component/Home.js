@@ -4,11 +4,10 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { NavLink } from 'react-router-dom';
+import Detailmodal from "./Detailmodal";
 const Home = () => {
   const [getuserdata, setUserdata] = useState([]);
   console.log(getuserdata);
-
-
   const getdata = async () => {
 
       const res = await fetch("http://localhost:8003/getdata", {
@@ -65,9 +64,10 @@ const Home = () => {
               <th scope="col">Id</th>
               <th scope="col">Username</th>
               <th scope="col">Email</th>
-              <th scope="col">Job</th>
+              <th scope="col">Location</th>
               <th scope="col">Number</th>
               <th scope="col"></th>
+              <th scope="col">Modal</th>
             </tr>
           </thead>
           <tbody>
@@ -79,12 +79,15 @@ const Home = () => {
                                                 <th scope="row">{id + 1}</th>
                                                 <td>{element.name}</td>
                                                 <td>{element.email}</td>
-                                                <td>{element.work}</td>
+                                                <td>{element.state},{element.country}</td>
                                                 <td>{element.mobile}</td>
                                                 <td className="d-flex justify-content-between">
-                                                    <NavLink to={`view/${element._id}`}> <button className="btn btn-success"><RemoveRedEyeIcon /></button></NavLink>
+                                                    <NavLink to={`detail/${element._id}`}> <button className="btn btn-success"><RemoveRedEyeIcon /></button></NavLink>
                                                     <NavLink to={`edit/${element._id}`}>  <button className="btn btn-primary"><CreateIcon /></button></NavLink>
                                                     <button className="btn btn-danger" onClick={()=>DeleteUser(element._id)}><DeleteOutlineIcon /></button>
+                                                </td>
+                                                <td>
+                                                <Detailmodal element={element}/>
                                                 </td>
                                             </tr>
                                         </>

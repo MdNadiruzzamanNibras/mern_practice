@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { Button } from 'react-bootstrap'
 
 
+
 const Register = () => {
    const [inpval,setINP] = useState({
     name:"",
@@ -11,10 +12,10 @@ const Register = () => {
     state:"",
     country:"",
     lan:{},
-    gender:""
+    gender:"",
+    img:""
 
    })
-
     const setData = (e) => {
     console.log(e?.target?.value);
     const{name,value} = e?.target;
@@ -27,14 +28,14 @@ const Register = () => {
    }
    const addinput = async (e) =>{
     e.preventDefault()
-    const {name,email,age,country,mobile,lan,state,gender} = inpval;
+    const {name,email,age,country,mobile,lan,state,gender,img} = inpval;
     const res = await fetch("http://localhost:8003/register",{
       method:"POST",
       headers:{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name,email,age,country,mobile,lan,state,gender
+        name,email,age,country,mobile,lan,state,gender,img
       })
 
     })
@@ -48,7 +49,7 @@ const Register = () => {
       alert("Add success")
       console.log(data);
     }
-    e.target.reset();
+    
    }
   return (
     <div className='container'>
@@ -76,8 +77,10 @@ const Register = () => {
             <select  name='country' onChange={setData}class="form-select" aria-label="Default select example">
   <option >select country name</option>
   <option >India</option>
-  <option >Pakistan</option>
   <option >Bangladesh</option>
+  <option >Pakistan</option>
+  <option >Others</option>
+  
 </select>
             </div>
             <div className='mb-3 col-lg-6 col-md-6 col-12'>
@@ -92,6 +95,7 @@ const Register = () => {
   <option  >Maharashtra</option>
   <option   >Tamil Nadu</option>
   <option   >Rajasthan</option>
+  <option   >Others</option>
 </select>
             </div>
             <div className='mb-3 col-lg-6 col-md-6 col-12'>
@@ -111,17 +115,23 @@ const Register = () => {
             </div>
             <div className='mb-3 col-lg-6 col-md-6 col-12'>
             <div class="form-check">
-  <input class="form-check-input" type="checkbox" name="lan"  value="hindi" onChange={setData} id="flexCheckDefault"/>
+  <input class="form-check-input" type="checkbox" name="lan"  value="Hindi" onChange={setData} id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
-    hindi
+    Hindi
   </label>
 </div>
             <div class="form-check">
-  <input class="form-check-input" type="checkbox" name="lan"  value="english" onChange={setData} id="flexCheckDefault"/>
+  <input class="form-check-input" type="checkbox" name="lan"  value="English" onChange={setData} id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
-   engl
+  English
   </label>
 </div>
+
+            </div>
+            <div className='mb-3 col-lg-6 col-md-6 col-12'>
+            <label for="exampleInputname">Age</label>
+            <input type="file"onChange={setData} name="img" value={inpval.img}class="form-control" id="exampleInputImg"  placeholder="Enter Image" />
+   
             </div>
             
                  <Button  type='submit'  onClick={addinput}  variant="primary">submit</Button>

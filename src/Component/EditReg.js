@@ -3,15 +3,18 @@ import { NavLink, useParams,  Navigate, useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 const EditReg = () => {
-   const [inpval,setINP] = useState({
+  const [inpval,setINP] = useState({
     name:"",
     email:"",
     age:"",
     mobile:"",
-    work:"",
-    add:"",
-    description:""
+    state:"",
+    country:"",
+    lan:{},
+    gender:""
+
    })
+
     const setData = (e) => {
     console.log(e.target.value);
     const{name,value} = e.target;
@@ -52,14 +55,14 @@ const EditReg = () => {
   }, [])
   const updateuser = async(e)=>{
     e.preventDefault()
-    const {name,email,age,mobile,work,add,description} = inpval;
+    const {name,email,age,country,mobile,lan,state,gender} = inpval;
     const res2 = await fetch(`http://localhost:8003/updatedata/${id}`,{
       method:"PATCH",
       headers:{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name,email,age,mobile,work,add,description
+        name,email,age,country,mobile,lan,state,gender
       })
 
     })
